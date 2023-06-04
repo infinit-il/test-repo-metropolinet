@@ -20,8 +20,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
-,p_last_updated_by=>'EVGENY'
-,p_last_upd_yyyymmddhh24miss=>'20230601163229'
+,p_last_updated_by=>'ANNA'
+,p_last_upd_yyyymmddhh24miss=>'20230530181222'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(2053457999017307)
@@ -40,14 +40,13 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Clients'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(1737796898002140)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>10
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'Select client_id,client_type,client_first_name,client_last_name',
 'from rm_clients',
 'where rownum<501'))
 ,p_plug_source_type=>'NATIVE_IR'
-,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_prn_page_header=>'Clients'
 );
 wwv_flow_imp_page.create_worksheet(
@@ -119,22 +118,6 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
 ,p_report_columns=>'CLIENT_ID:CLIENT_TYPE:CLIENT_FIRST_NAME:CLIENT_LAST_NAME'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(1615564698382004)
-,p_name=>'P2_NEW'
-,p_item_sequence=>30
-,p_prompt=>'New'
-,p_display_as=>'NATIVE_DISPLAY_MAP'
-,p_begin_on_new_line=>'N'
-,p_begin_on_new_field=>'N'
-,p_field_template=>wwv_flow_imp.id(1817989245002168)
-,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'default'
-,p_attribute_02=>'14'
-,p_attribute_03=>'Y'
-,p_attribute_06=>'Y'
-,p_attribute_07=>'Y'
 );
 wwv_flow_imp.component_end;
 end;
