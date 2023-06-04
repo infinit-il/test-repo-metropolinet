@@ -20,37 +20,45 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
-,p_last_updated_by=>'EVGENY'
-,p_last_upd_yyyymmddhh24miss=>'20230604143723'
+,p_last_updated_by=>'KARIN'
+,p_last_upd_yyyymmddhh24miss=>'20230604151042'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(1859757158002198)
 ,p_plug_name=>'test_devops'
 ,p_region_template_options=>'#DEFAULT#'
-,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_imp.id(1714519262002132)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_plug_display_point=>'REGION_POSITION_01'
 ,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_region_image=>'#APP_FILES#icons/app-icon-512.png'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(1616867606382017)
+ p_id=>wwv_flow_imp.id(4681017754884906)
 ,p_name=>'P1_NEW'
 ,p_item_sequence=>10
+,p_item_display_point=>'AFTER_NAVIGATION_BAR'
 ,p_prompt=>'New'
-,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
+,p_display_as=>'NATIVE_DATE_PICKER_APEX'
+,p_cSize=>30
 ,p_field_template=>wwv_flow_imp.id(1817989245002168)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
+,p_attribute_02=>'POPUP'
+,p_attribute_03=>'NONE'
+,p_attribute_06=>'NONE'
+,p_attribute_09=>'N'
+,p_attribute_11=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(1616930020382018)
+ p_id=>wwv_flow_imp.id(4681120623884907)
 ,p_name=>'P1_NEW_1'
-,p_item_sequence=>20
+,p_item_sequence=>10
+,p_item_display_point=>'AFTER_LOGO'
 ,p_prompt=>'New'
 ,p_display_as=>'NATIVE_DISPLAY_MAP'
 ,p_field_template=>wwv_flow_imp.id(1817989245002168)
@@ -62,16 +70,16 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_07=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(1617005403382019)
+ p_id=>wwv_flow_imp.id(4681258999884908)
 ,p_name=>'P1_NEW_2'
-,p_item_sequence=>30
+,p_item_sequence=>10
+,p_item_display_point=>'BEFORE_NAVIGATION_BAR'
 ,p_prompt=>'New'
-,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
-,p_begin_on_new_line=>'N'
-,p_begin_on_new_field=>'N'
+,p_display_as=>'NATIVE_STAR_RATING'
 ,p_field_template=>wwv_flow_imp.id(1817989245002168)
 ,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'5'
+,p_attribute_02=>'Y'
 );
 wwv_flow_imp.component_end;
 end;
