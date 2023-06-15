@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-############ 2023.06.14.17.36.36 #################################
+############ 2023.06.15.14.55.38 #################################
 ############ lb.parameters ########################################
 applicationid                  : 800
 basecommand                    : lb
 command                        : generate-apex-object
-exporiginalids                 : false
+exporiginalids                 : true
 expsupportingobjects           : Y
 exptype                        : APPLICATION_SOURCE
 fail-on-error                  : false
