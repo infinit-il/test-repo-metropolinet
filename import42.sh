@@ -2,7 +2,7 @@
 
 username="W_YEHUD_TEST"
 password="W_YEHUD_TEST"
-host="172.30.200.42"   # < ----!!!
+host="172.30.200.42"   # < ----!!! 42 !!!!
 port="1521"
 service_name="orc1"
 
