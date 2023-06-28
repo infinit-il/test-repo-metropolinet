@@ -20,8 +20,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
-,p_last_updated_by=>'ANNA'
-,p_last_upd_yyyymmddhh24miss=>'20230530180925'
+,p_last_updated_by=>'EVGENY'
+,p_last_upd_yyyymmddhh24miss=>'20230628161838'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(1859757158002198)
@@ -36,6 +36,17 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(1620007447382049)
+,p_button_sequence=>10
+,p_button_name=>'New'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(1820496944002170)
+,p_button_image_alt=>'BUTTON42'
+,p_button_cattributes=>'style="background-color:blue;color:white";'
+,p_grid_new_row=>'Y'
 );
 wwv_flow_imp.component_end;
 end;
