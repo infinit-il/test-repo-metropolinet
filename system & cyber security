@@ -1,0 +1,73 @@
+@startuml
+
+' skinparam linetype polyline
+
+
+card "Environment - on premises" as env #line.dashed:red{
+    node Ansible{
+        folder Ansible as fs_ansible {
+            file playbook #Pink[ 
+                abra = 0.1.0
+                kadabra = 0.1.0
+            ]
+            collections inventory [
+                Server23
+                Server42
+                Server43
+            ]
+        }
+        component "ansible" as cn_ansible{
+            portin "in" as ansible_in
+            portout "out" as ansible_out
+
+        }
+}
+    
+    node Server42 as s42 {
+        database oracle as oracle42
+        frame chocolatey as choco42
+        
+
+    }
+    node Server43{
+        database oracle as oracle43
+        frame chocolatey as choco43
+    }
+    node Server23{
+        database oracle as oracle23
+        frame chocolatey as choco23
+    }
+}
+
+
+cloud Azure #line.dashed:blue {
+    card "Azure devops" as ad {
+        frame "artifacts" as artifacts 
+        frame "pipelines" as pipeline {
+            control "Deploy" as deploy
+        }
+        frame "repos" as repos {
+            package "Ansible" as rp_ansible {
+                 file rp_play #YellowGreen [ 
+                 abra = 0.1.1
+                 kadabra = 0.1.1
+            ]
+            collections rp_inv [
+                Server23
+                Server42
+                Server43
+            ]
+            }
+        }
+        rp_ansible ...> deploy :<b> Trigger  
+    }
+}
+
+choco42 ..o artifacts : <B> Pull arifatcs\n <B>Https 443 
+ansible_out --> Server23 : <B> Port 22
+ansible_out --> s42 : <B> Port 22
+ansible_out --> Server43 : <B> Port 22
+deploy -----> ansible_in : <B> Run playbook \n\n <B> Ports/VPN : TBD
+fs_ansible .....o rp_ansible : <B> Git sync\n <B> Port: HTTPS 443
+
+@enduml
