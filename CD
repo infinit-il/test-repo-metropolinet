@@ -1,0 +1,62 @@
+@startuml
+node Ansible{
+    file playbook [ 
+        abra = 0.1.0
+        kadabra = 0.1.0
+    ]
+    collections inventory [
+        Server23
+        Server42
+        Server43
+    ]
+}
+node Server42 as s42 {
+    database oracle as oracle42{
+        frame "table A" as a
+        frame "table B" as b
+    }
+    frame chocolatey as choco42{
+        artifact "abra 0.1.0" as ab010{
+            component "table a" as choco_a
+            component "file hello" as choco_hello
+        }
+        artifact "kadabra 0.1.0" as kada010{
+            component "table b" as choco_b
+        }
+    }
+    folder "File system" as fs { 
+        file hello as hello
+    }
+
+    choco_a ..* a
+    choco_b ..* b
+    choco_hello ..* hello
+
+}
+node Server43{
+    database oracle as oracle43
+    frame chocolatey as choco43
+}
+node Server23{
+    database oracle as oracle23
+    frame chocolatey as choco23
+}
+cloud Azure {
+    package "Azure devops" as ad {
+        frame "artifacts" as artifacts {
+            artifact "abra 0.1.0" as ada_ab010
+            artifact "kadabra 0.1.0" as ada_kada010
+
+            artifact "abra 1.0.0" as ada_ab100
+            artifact "kadabra 1.0.0" as ada_kada100
+
+            artifact "abra 0.1.1" as ada_ab011
+    }
+}
+
+choco42 ..o artifacts
+Ansible --> Server23
+Ansible --> s42
+Ansible --> Server43
+
+@enduml
