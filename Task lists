@@ -1,0 +1,58 @@
+@startmindmap
++ metropolinet
+++ devops
++++ Develop
+++++ Liquibase
++++++ Export
++++++ SQL Statement
+++++ Gitflow
++++ Build
+++++ Chococlatey Pack
++++ package creation
++++ Deploy
+++++ Package installation
++++ Test/QA
+++ Methodology
++++ categorization
++++ Package depedency
++++ Semantic versioning
+++ Documentation
++++ How to guides
+++++ Conflict resolution
+++++ Pull requests
+++++ Package versioning and dependencies
++++ Reference
++++ Tutorials
+-- Infrastructure
+--- Artifact repository (Azure devops artifacts)
+--- Accessibility
+---- SSH Credentials
+---- Azure VPN
+--- Ansible controller
+-- Training
+--- Git
+--- Gitflow
+--- Package management (chocolatey)
+--- Deployment (Ansible)
+-- Environment setup
+--- Workstation
+---- VS Code
+---- VS Code extensions
+----- GitLents
+----- Git History
+----- Git Graph
+---- Git
+--- Server
+---- Infra
+----- Powershell
+----- Chocolatey
+----- SSH Server
+--- Data
+---- DB
+----- Oracle DB
+----- SQL Client (sqlcl)
+-----  Operational schemes
+-----  Apex tables 
+---- Working files
+---- User data
+@endmindmap
