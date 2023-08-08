@@ -1,0 +1,79 @@
+@startuml
+card CI #Green
+
+node workstation as ws{
+    package "abra" as abra {
+        folder "SQL scripts" as fs_sql_scripts{
+            file "table_a.sql" as fs_sqla #YellowGreen
+            file "table_z.sql" as fs_sqlz 
+        }
+        folder "file scripts" as fs_scripts {
+            file "form1.bin" as fs_form1
+        }
+        folder "tools" as fs_tools {
+            file "install" as fs_install
+            file "uninstall" as fs_uninstall
+        }
+        file fs_nuspec #YellowGreen [
+            ID = abra
+            version = 0.1.1
+            depends on = kadabra 0.1.0
+        ]
+    }
+    database oracle as oracle{
+        frame "table A" as a
+        frame "table B" as b
+    }
+    a ..* fs_sqla :<B>  liquibase\n <B> Export
+}
+
+cloud Azure {
+    package "Azure devops" as ad {
+        frame "artifacts" as artifacts {
+            artifact "abra 0.1.0" as ada_ab010
+            artifact "abra 0.1.1" as ada_ab011 #YellowGreen {
+                component install 
+                component uninstall
+                component table_a.sql
+                component table_z.sql
+                component form1.bin
+            }
+            artifact "kadabra 0.1.0" as ada_kada010
+            artifact "..." as dot1
+            artifact "..." as dot2
+        }
+        frame "repos" as repos {
+            package "abra" as rp_abra {
+            folder "SQL scripts" as rp_sql_scripts{
+                file "table_a.sql" as rp_sqlb #Pink
+                file "table_z.sql" as rp_sqlz 
+            }
+            folder "file scripts" as rp_scripts {
+                file "form1.bin" as rp_form1
+            }
+            folder "tools" as rp_tools {
+                file "install" as rp_install
+                file "uninstall" as rp_uninstall
+            }
+            file rp_nuspec #Pink[
+                ID = abra
+                version = 0.1.0
+                depends on = kadabra 0.1.0
+            ]
+        }
+    database oracle as oracle{
+        frame "table A" as a
+        frame "table B" as b
+    }
+        }
+        frame "pipelines" as pipeline {
+        control "build package" as build
+        }
+    }
+    
+}
+
+abra ....* rp_abra :<B> Git push
+rp_abra ...> pipeline :<b> Trigger
+build ..* ada_ab011 
+@enduml
