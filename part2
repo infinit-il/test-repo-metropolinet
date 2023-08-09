@@ -1,0 +1,38 @@
+@startmindmap
++ metropolinet tasks
+++ Real package POC
++++[#orange] Identify packages
++++ Create liquibase for real-world usage
+++ Package standardization
++++ Templates for object types
+++++ File
+++++ DB object
+++++ Virtual package
++++ Liquibase scripts for all object categories
+++++ Common objects (table, view, function, ...)
+++++[#Orange] APEX
+++++[#OrangeRed] Unknown, complex objects
+++ Development standard
++++ Git repo configuration
++++ Gitflow enforcement
+++++ Branch protections
+++++ Approval process
+-- Infrastructure
+--- IAC
+---- Dockerized ansible controller?
+---- Chocolatey infrastructure
+----- Installation
+----- Source configuration
+---- Accessibility infrastructure
+----- SSH Server deployment
+----- Key deployment
+----- VPN
+-- CI
+--- Package promotion
+--- Build pipeline
+-- CD
+--- Deploy pipeline
+---- Allows scheduling
+---- Prevent parallel runs?
+----[#orange] Incremental or full state?
+@endmindmap
