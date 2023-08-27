@@ -1,0 +1,26 @@
+C:liquibase_test>  sql.exe /nolog
+
+connect  W_YEHUD_TEST/W_YEHUD_TEST@172.30.200.42:1521/orc1
+connect  hr/hr@172.30.200.42:1521/orc1
+lb generate-apex-object -applicationid 800 -expOriginalIds -split
+
+lb generate-object -object-type TABLE -object-name Rm_Branch_Codes;
+lb generate-object -object-type TABLE -object-name Rm_Bank_Codes;
+lb generate-object -object-type VIEW -object-name ALL_BANKS_BI;
+
+--------------------------------------------------------
+--  DDL for View ALL_BANKS_BI
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "W_YEHUD_TEST"."ALL_BANKS_BI" ("BANK_CODE", "BANK_NAME", "BRANCH_CODE", "BRANCH_NAME") AS 
+  SELECT h.Bank_Code, b.bank_name, h.Branch_Code, h.Branch_Name
+  FROM Rm_Branch_Codes h, Rm_Bank_Codes b
+ WHERE h.Stamp_Action <> 'D'
+   AND b.Stamp_Action <> 'D'
+   AND h.Bank_Code = b.Bank_code
+   AND h.Branch_Type = b.Branch_Type
+   AND h.Branch_Type = 1
+
+lb update -changelog-file all_banks_bi_view.xml
+lb update -changelog-file rm_branch_codes_table.xml
+lb update -changelog-file rm_bank_codes_table.xml

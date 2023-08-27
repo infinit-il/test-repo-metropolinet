@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" 
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="a38729a575032a604092417e34da3ac2e2b0166d" author="(W_YEHUD_TEST)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
+		<n0:createSxmlObject objectName="ALL_BANKS_BI" objectType="VIEW" ownerName="W_YEHUD_TEST"  replaceIfExists="true" >
+			<n0:source><![CDATA[
+  <VIEW xmlns="http://xmlns.oracle.com/ku" version="1.0">
+   <SCHEMA>W_YEHUD_TEST</SCHEMA>
+   <NAME>ALL_BANKS_BI</NAME>
+   <COL_LIST>
+      <COL_LIST_ITEM>
+         <NAME>BANK_CODE</NAME>
+      </COL_LIST_ITEM>
+      <COL_LIST_ITEM>
+         <NAME>BANK_NAME</NAME>
+      </COL_LIST_ITEM>
+      <COL_LIST_ITEM>
+         <NAME>BRANCH_CODE</NAME>
+      </COL_LIST_ITEM>
+      <COL_LIST_ITEM>
+         <NAME>BRANCH_NAME</NAME>
+      </COL_LIST_ITEM>
+   </COL_LIST>
+   <SUBQUERY>SELECT h.Bank_Code, b.bank_name, h.Branch_Code, h.Branch_Name
+  FROM Rm_Branch_Codes h, Rm_Bank_Codes b
+ WHERE h.Stamp_Action &#60;> 'D'
+   AND b.Stamp_Action &#60;> 'D'
+   AND h.Bank_Code = b.Bank_code
+   AND h.Branch_Type = b.Branch_Type
+   AND h.Branch_Type = 1</SUBQUERY>
+</VIEW>]]></n0:source>
+		</n0:createSxmlObject>
+	</changeSet>
+</databaseChangeLog>
